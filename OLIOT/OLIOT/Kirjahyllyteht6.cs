@@ -16,9 +16,11 @@ namespace OLIOT
             List<Kirja> Kirjahylly = new List<Kirja>();
             List<Cd> Kirjahylly2 = new List<Cd>();
 
-            Kirjahylly2.Add(new Cd { Author = "Elvis",Name = "Musiikkia", Placement = "Top left", Type = "CD", Year = 1957 });
+            Kirjahylly2.Add(new Cd { Author = "Elvis",Name = "Levy 2", Placement = "Top left", Type = "CD", Year = 1957 });
             Kirjahylly.Add(new Kirja { Author = "unknown", Name = "daa", PageNumber = 3, Placement = "left", Year = 5 });
             Kirjahylly.Add(new Kirja { Author = "Tolkien", Name = "Lord of the rings", PageNumber = 1112, Placement = "Middle", Year = 1952 });
+            Kirjahylly2.Add(new Cd { });
+
 
             foreach(var Kirja in Kirjahylly)
             {

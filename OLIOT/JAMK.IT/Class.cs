@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace JAMK.IT
 {
-    public class Bottom
+    public class Item
     {
         private string place = "Unknown";
-        public string Name { get; set; }
+        private string name = "Unknown";
+
+        public string Name { get { return name; } set { name = value; } }
+
         public int Year { get; set; }
         public string Placement
         {
@@ -17,20 +20,25 @@ namespace JAMK.IT
             set { place = value; }
         }
 
-        public Bottom()
+        public Item()
         {
 
         }
-        public Bottom(string name, string plc, int y)
+        public Item(string name, string plc, int y)
         {
             place = plc;
             Name = name;
             Year = y;
         }
+        public virtual string OutPut()
+        {
+            return "Name: " + Name + " Year made: " + Year + " Place: " + Placement;
+        }
+
 
     }
 
-    public class Kirja : Bottom
+    public class Kirja : Item
     {
         public int PageNumber { get; set; }
         public string Author { get; set; }
@@ -46,24 +54,24 @@ namespace JAMK.IT
             PageNumber = pnumb;
         }
         
-        public string OutPut()
+        public override string OutPut()
         {
-            return "Author: " + Author + " Name: " + Name +  " Year Published: " + Year + " Pages: " + PageNumber + " Place in the shelf: " + Placement;
+            return "Author: " + Author + " | Name: " + Name + " | Year Published: " + Year + " | Pages: " + PageNumber + " | Place in the shelf: " + Placement;
         }
 
     }
 
 
-    public class Cd : Bottom
+    public class Cd : Item
     {
         public string Type { get; set; } // movie,cd, dvd etc.
         public string Author { get; set; }
 
         public Cd() { }
 
-        public string OutPut()
+        public override string OutPut()
         {
-            return "Author: " + Author + " Name: " + Name + " Year Published: " + Year + " Type: " + Type + " Place in the shelf: " + Placement;
+            return "Author: " + Author + " | Name: " + Name + " | Year Published: " + Year + " | Type: " + Type + " | Place in the shelf: " + Placement;
         }
     }
 

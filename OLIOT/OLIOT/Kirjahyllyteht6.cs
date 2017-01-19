@@ -13,22 +13,16 @@ namespace OLIOT
     {
         public static void Kirjahylly()
         {
-            List<Kirja> Kirjahylly = new List<Kirja>();
-            List<Cd> Kirjahylly2 = new List<Cd>();
+            List<Item> testing = new List<Item>();
 
-            Kirjahylly2.Add(new Cd { Author = "Elvis",Name = "Levy 2", Placement = "Top left", Type = "CD", Year = 1957 });
-            Kirjahylly.Add(new Kirja { Author = "unknown", Name = "daa", PageNumber = 3, Placement = "left", Year = 5 });
-            Kirjahylly.Add(new Kirja { Author = "Tolkien", Name = "Lord of the rings", PageNumber = 1112, Placement = "Middle", Year = 1952 });
-            Kirjahylly2.Add(new Cd { });
+            testing.Add(new Cd { Author = "Elvis", Name = "Levy 2", Placement = "Top left", Type = "CD", Year = 1957 });
+            testing.Add(new Kirja { Author = "unknown", Name = "daa", PageNumber = 3, Placement = "left", Year = 5 });
+            testing.Add(new Kirja { Author = "Tolkien", Name = "Lord of the rings", PageNumber = 1112, Placement = "Middle", Year = 1952 });
+            testing.Add(new Cd { });
 
-
-            foreach(var Kirja in Kirjahylly)
+            foreach(var Item in testing)
             {
-                Console.WriteLine(Kirja.OutPut());
-            }
-            foreach (var Cd in Kirjahylly2)
-            {
-                Console.WriteLine(Cd.OutPut());
+                Console.WriteLine(Item.OutPut());
             }
 
 

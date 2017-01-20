@@ -46,6 +46,7 @@
     <Compile Include="Kirjahyllyteht6.cs" />
     <Compile Include="Start.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vehicles.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

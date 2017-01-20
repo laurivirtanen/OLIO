@@ -75,4 +75,46 @@ namespace JAMK.IT
         }
     }
 
+    public class Stuff
+    {
+        public string Model { get; set; }
+        public string Name { get; set; }
+        public Stuff() { }
+        public Stuff(string mod, string name)
+        {
+            Model = mod;
+            Name = name;
+        }
+        public virtual string PrintData()
+        {
+            return "Model: "+Model+" Name: " +Name;
+        }
+    }
+
+
+    public class Vehicle : Stuff
+    {
+        public List<Tyre> Tyres { get; set; }
+        public Vehicle() { }
+        public Vehicle(string mod, string name, List<Tyre> tyres) : base(mod,name)
+        {
+            Tyres = tyres;
+        }
+        
+        public override string PrintData()
+        {
+            return base.PrintData() + "Tyres: " + Tyres;
+        }
+
+
+    }
+
+    public class Tyre: Stuff
+    {
+        public string TyreSize { get; set; }
+
+        public Tyre() { }
+        public Tyre(string mod, string name, string tyres) : base(mod,name) { tyres = TyreSize; }
+    }
+
 }

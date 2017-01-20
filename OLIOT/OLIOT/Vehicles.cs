@@ -5,6 +5,30 @@ using System.Text;
 using System.Threading.Tasks;
 using JAMK.IT;
 
+/* Example print
+
+    HOMEWORK 1 - WEEK 04
+
+Name&Model: Pagani Zonda
+Tyres:
+        Name&Model: Nokia Hakkapeliitta Size: 205R16
+        Name&Model: Nokia Hakkapeliitta Size: 205R16
+        Name&Model: Nokia Hakkapeliitta Size: 205R16
+        Name&Model: Nokia Hakkapeliitta Size: 205R16
+
+Name&Model: Porche 911
+Tyres:
+        Name&Model: Nokia Hakkapeliitta Size: 205R16
+        Name&Model: Nokia Hakkapeliitta Size: 205R16
+        Name&Model: Nokia Hakkapeliitta Size: 205R16
+        Name&Model: Nokia Hakkapeliitta Size: 205R16
+
+Name&Model: Diavel Ducati
+Tyres:
+        Name&Model: MIC Pilot Size: 160R17
+        Name&Model: MIC Pilot Size: 140R16
+
+*/
 namespace OLIOT
 {
     public class Vehicles

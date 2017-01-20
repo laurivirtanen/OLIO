@@ -12,9 +12,11 @@ namespace OLIOT
         static void Main()
         {
 
-            Kirjahyllyteht6.Kirjahylly();
+           // Kirjahyllyteht6.Kirjahylly();
+            Vehicles.VehicleTesting();
 
-            
+
+
         }
-    }
+}
 }

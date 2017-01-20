@@ -79,31 +79,37 @@ namespace JAMK.IT
     {
         public string Model { get; set; }
         public string Name { get; set; }
+       
         public Stuff() { }
         public Stuff(string mod, string name)
         {
             Model = mod;
             Name = name;
         }
-        public virtual string PrintData()
+        public virtual string OutPut()
         {
-            return "Model: "+Model+" Name: " +Name;
+            return "Name&Model: " + Name + " " + Model;
         }
     }
 
 
     public class Vehicle : Stuff
     {
+        private int wheel = 4;
         public List<Tyre> Tyres { get; set; }
+        public int Wheel { get { return wheel; } set { wheel = value; } }
         public Vehicle() { }
-        public Vehicle(string mod, string name, List<Tyre> tyres) : base(mod,name)
+        public Vehicle(string mod, string name,int whl, List<Tyre> tyres) : base(mod,name)
         {
             Tyres = tyres;
+            Wheel = whl;
         }
         
-        public override string PrintData()
+        public override string OutPut()
         {
-            return base.PrintData() + "Tyres: " + Tyres;
+
+            return base.OutPut();
+
         }
 
 
@@ -111,10 +117,16 @@ namespace JAMK.IT
 
     public class Tyre: Stuff
     {
-        public string TyreSize { get; set; }
 
+        public string TyreSize { get; set; }
         public Tyre() { }
-        public Tyre(string mod, string name, string tyres) : base(mod,name) { tyres = TyreSize; }
+        public Tyre(string mod, string name, string tyres) : base(mod,name) { TyreSize = tyres; }
+
+        public override string OutPut()
+        {
+            return base.OutPut() + " Size: " + TyreSize;
+        }
+
     }
 
 }

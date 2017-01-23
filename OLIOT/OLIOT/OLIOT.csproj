@@ -44,7 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FridgeQuest.cs" />
+    <Compile Include="Class.cs" />
     <Compile Include="Kirjahyllyteht6.cs" />
+    <Compile Include="NisakasTeht3.cs" />
     <Compile Include="Start.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vehicles.cs" />

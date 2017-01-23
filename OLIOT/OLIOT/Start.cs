@@ -11,10 +11,10 @@ namespace OLIOT
     {
         static void Main()
         {
-
+            NisakasTeht3.Teht3();
             FridgeQuest.Fridging();
 
-            Vehicles.VehicleTesting();
+          //  Vehicles.VehicleTesting();
 
 
 

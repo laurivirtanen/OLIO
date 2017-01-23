@@ -40,40 +40,35 @@ namespace OLIOT
 
             Tyre MIC = new Tyre("Pilot","MIC",  "160R17");
             Tyre MIC2 = new Tyre("Pilot", "MIC", "140R16");
+
             List<Tyre> MICS = new List<Tyre>();
 
             MICS.Add(MIC); MICS.Add(MIC2);
 
-            
-
-            Vehicle Car1 = new Vehicle("911", "Porche",4, Hakkapeliitat);
-            
-
-            
-            for (int i = 0; i < Car1.Wheel; i++)
-            {
-                Hakkapeliitat.Add(Hakkapeliitta);
-            }
+           
+           
 
             List<Vehicle> Cars = new List<Vehicle>();
-
+            
+            
+            Vehicle Car1 = new Vehicle("911", "Porche", 4, Hakkapeliitat);
             Cars.Add(new Vehicle("Zonda", "Pagani", 4, Hakkapeliitat));
-            Cars.Add(Car1);
-            Cars.Add(new Vehicle("Ducati", "Diavel", 2, MICS));
 
-            int x = 0;
+            Vehicle Mopedi = new Vehicle("Mopo", "jep", 2, MICS);
+
+            Cars.Add(Car1);
+            Cars.Add(Mopedi);
+            Car1.AddTyres(Hakkapeliitta);
+
             foreach (var Vehicle in Cars)
             {
                 //Prints every Vehicle in the Cars list
-                x = 0;
-                Console.WriteLine("\n"+Vehicle.OutPut());
-
-                
-                foreach (var Tyre in Vehicle.Tyres)//Prints every Tyre for the current vehicle
+                Console.WriteLine("\n" + Vehicle.OutPut());
+                foreach(var Tyre in Vehicle.Tyres)
                 {
-                    if (x == 0) { Console.WriteLine("Tyres: "); x++; }
-                    Console.WriteLine("\t"+Tyre.OutPut());
+                    Console.WriteLine(Tyre.OutPut());
                 }
+               
             }
 
             

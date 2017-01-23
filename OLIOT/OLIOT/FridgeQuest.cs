@@ -7,17 +7,11 @@ using JAMK.IT;
 
 namespace OLIOT
 {
-    class Start
+    public class FridgeQuest
     {
-        static void Main()
+        public static void Fridging()
         {
 
-           // FridgeQuest.Fridging();
-
-            Vehicles.VehicleTesting();
-
-
-
         }
-}
+    }
 }

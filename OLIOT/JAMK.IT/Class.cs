@@ -95,23 +95,31 @@ namespace JAMK.IT
 
     public class Vehicle : Stuff
     {
-        private int wheel = 4;
-        public List<Tyre> Tyres { get; set; }
-        public int Wheel { get { return wheel; } set { wheel = value; } }
+        public List<Tyre> Tyres { get; }
+        public int Wheel { get; }
         public Vehicle() { }
-        public Vehicle(string mod, string name,int whl, List<Tyre> tyres) : base(mod,name)
+
+        public Vehicle(string mod, string name,int whl, List<Tyre> daa) : base(mod,name)
         {
-            Tyres = tyres;
+            Tyres = daa;
             Wheel = whl;
         }
-        
-        public override string OutPut()
+
+        public void AddTyres(Tyre Tyre)
         {
-
-            return base.OutPut();
-
+            for (int i = 0; i < Wheel; i++)
+            {
+                Tyres.Add(Tyre);
+            }
         }
 
+
+        public override string OutPut()
+        {
+            return base.OutPut();
+        }
+
+        
 
     }
 

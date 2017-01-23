@@ -95,6 +95,8 @@ namespace JAMK.IT
 
     public class Vehicle : Stuff
     {
+
+
         public List<Tyre> Tyres { get; }
         public int Wheel { get; }
         public Vehicle() { }

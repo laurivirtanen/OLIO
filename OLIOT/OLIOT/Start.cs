@@ -12,7 +12,7 @@ namespace OLIOT
         static void Main()
         {
 
-           // FridgeQuest.Fridging();
+            FridgeQuest.Fridging();
 
             Vehicles.VehicleTesting();
 

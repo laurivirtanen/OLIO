@@ -11,6 +11,8 @@ namespace OLIOT
     {
         public static void Fridging()
         {
+            Fridge Fridge = new Fridge();
+
 
         }
     }

@@ -45,12 +45,8 @@ namespace OLIOT
 
             MICS.Add(MIC); MICS.Add(MIC2);
 
-           
-           
-
             List<Vehicle> Cars = new List<Vehicle>();
-            
-            
+                        
             Vehicle Car1 = new Vehicle("911", "Porche", 4, Hakkapeliitat);
             Cars.Add(new Vehicle("Zonda", "Pagani", 4, Hakkapeliitat));
 

@@ -12,24 +12,21 @@ namespace OLIOT
         public static void Fridging()
         {
 
-            Drink Milk = new Drink("Milk");
-            List<Food> Drinksies = new List<Food>();
-            //List<Drink> Drinks = new List<Drink>();
+            Drink Drink1 = new Drink("Milk");
+            Food Food1 = new Food("Meat");
+            List<Food> Drinks = new List<Food>();
+            List<Food> Meats = new List<Food>();
+            Drinks.Add(Drink1);
+            Meats.Add(Food1);
             Fridge Fridgi = new Fridge();
-            Shelf Shelfie = new Shelf("thing", Drinksies);
-            
-            Shelfie.AddFood(Milk);
+
+            Shelf Shelfie = new Shelf("Bottom Shelf",Drinks);
+            Shelf topShelf = new Shelf("Top Shelf",Meats);
+
             Fridgi.AddShelf(Shelfie);
-
-
-
-            foreach (var Food in Fridgi.Shelves)
-            {
-                Console.WriteLine(Food.ToString());
-                Console.WriteLine("daa");
-            }
-
-
+            Fridgi.AddShelf(topShelf);
+           
+            Console.WriteLine(Fridgi.ToString());
         }
     }
 }

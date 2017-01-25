@@ -6,6 +6,123 @@ using System.Threading.Tasks;
 
 namespace Kokoelmaluokat
 {
+
+    class Card
+    {
+        private int value;
+        private string suit;
+        public int Value { get { return value; } }
+        public string Suit { get { return suit; } }
+        public Card(int val, string st)
+        {
+            value = val;
+            suit = st;
+        }
+
+        public override string ToString()
+        {
+            switch (value)
+            {
+                
+                    
+                case 11:
+                    return "Jack of " + suit;
+                   
+                case 12:
+                    return "Queen of " + suit;
+                    
+                case 13:
+                    return "King of " + suit;
+                case 14:
+                    return "Ace of " + suit;
+
+                default:
+                    return value + " of " + suit;
+            }
+        }
+    }
+
+    class Deck
+    {
+        
+        private List<Card> cards;
+        public List<Card> CardList { get { return cards; } }
+        public Deck()
+        {
+            cards = new List<Card>();
+
+        }
+
+        public List<Card> Fill()
+        {
+            string[] suits = { "Hearts", "Diamonds", "Clubs", "Spades" };
+            int x = 0;
+            foreach (var suit in suits)
+            {
+                for (int i = 2; i < 15; i++)
+                {
+                    cards.Add(new Card(i, suits[x]));
+                }
+                x++;
+            }
+            return cards;
+        }
+
+        public List<Card> Shuffle()
+        {
+
+            //30k shuffles
+            for (int i = 0; i < 100000; i++)
+            {
+                Random rand = new Random();
+                int max = 52;
+                List<Card> cardss = new List<Card>();
+                while (max > 0)
+                {
+                    int RnG = rand.Next(0, max);
+                    cardss.Add(cards[RnG]);
+                    cards.Remove(cards[RnG]);
+                    max--;
+                }
+
+                cards = cardss;
+
+                //every 20k "shuffle" lets user know
+                if (i % 20000 == 0) { Console.WriteLine("loading..."); }
+                /* BUG TESTING REMOVE
+                if (i % 5000 == 0)
+                {
+                    Console.WriteLine("\n\n");
+                    foreach (var item in cards)
+                    {
+                        Console.WriteLine(item.ToString());
+                    }
+
+                } */
+            }
+           
+            return cards;
+        }
+        //hand sorting, doesnt belong here
+        public Card[] Sorting(Card[] handu)
+        {
+
+            Array.Sort(handu, delegate (Card card, Card card2)
+            {
+                return card.Suit.CompareTo(card2.Suit);
+            });
+            Array.Sort(handu, delegate (Card card, Card card2)
+            {
+                return card.Value.CompareTo(card2.Value);
+            });
+            Array.Reverse(handu);
+            return handu;
+        }
+
+    }
+
+
+
     /// <summary>
     /// This class contains person properties
     /// </summary>

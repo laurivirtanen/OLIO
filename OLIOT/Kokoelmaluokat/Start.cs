@@ -10,9 +10,8 @@ namespace Kokoelmaluokat
     {
         public static void Main()
         {
-            Kokoelmat.TestaaHenkiloRekisteri();
-            Kokoelmat.Deck();
-            Kokoelmat.Levy();
+            Kokoelmat.CardsClass();
+        //    Kokoelmat.TestaaHenkiloRekisteri();Kokoelmat.Deck();Kokoelmat.Levy();
         }
     }
 }

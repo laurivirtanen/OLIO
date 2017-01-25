@@ -10,6 +10,35 @@ namespace Kokoelmaluokat
     class Kokoelmat
     {
 
+        public static void CardsClass()
+        {
+            Deck Decky = new Deck();
+            Decky.Fill();
+                       
+            Decky.Shuffle();
+            
+            // Getting 5 cards from the deck
+            Card[] hand = new Card[5];
+            Console.WriteLine("\n\n\n");
+            for (int i = 0; i < 5; i++)
+            {
+                hand[i] = Decky.CardList[i];
+            }
+
+            //hand sorting -  TODO maybe put this to Player 
+            Decky.Sorting(hand);
+
+            Console.WriteLine("Your hand:");
+            foreach (Card c in hand)
+            {
+                Console.WriteLine("\t- "+c.ToString());
+            }
+
+            
+            
+        }
+
+
         public static void TestaaHenkiloRekisteri()
         {
             Henkilot Listaus = new Henkilot();
@@ -75,7 +104,7 @@ namespace Kokoelmaluokat
             }
         }
 
-        static string[] Shuffler(string[] Shuffling)
+        public static string[] Shuffler(string[] Shuffling)
         {
             Random rand = new Random();
             string temp;

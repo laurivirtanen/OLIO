@@ -14,28 +14,46 @@ namespace Kokoelmaluokat
         {
             Deck Decky = new Deck();
             Decky.Fill();
-                       
             Decky.Shuffle();
-            
+            Stack<Card> cardies = new Stack<Card>();
+
+            foreach (var card in Decky.CardList)
+            {
+                cardies.Push(card);
+            }
             // Getting 5 cards from the deck
             Card[] hand = new Card[5];
+            //hand2 uses Stack.
+            Card[] hand2 = new Card[5];
             Console.WriteLine("\n\n\n");
+
             for (int i = 0; i < 5; i++)
             {
+                
                 hand[i] = Decky.CardList[i];
+                //takes from stack so there cant be duplicates and MAYBE(?) works better later.
+                hand2[i] = cardies.Pop();
+
             }
 
             //hand sorting -  TODO maybe put this to Player 
             Decky.Sorting(hand);
-
+            Decky.Sorting(hand2);
             Console.WriteLine("Your hand:");
+            //printing the hands
             foreach (Card c in hand)
             {
                 Console.WriteLine("\t- "+c.ToString());
             }
 
-            
-            
+            Console.WriteLine("\n\n");
+            foreach (Card c in hand2)
+            {
+                Console.WriteLine("\t- " + c.ToString());
+            }
+
+
+
         }
 
 

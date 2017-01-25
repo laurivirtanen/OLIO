@@ -70,12 +70,12 @@ namespace Kokoelmaluokat
 
         public List<Card> Shuffle()
         {
-
+            int max = 52;
             //30k shuffles
             for (int i = 0; i < 100000; i++)
             {
                 Random rand = new Random();
-                int max = 52;
+                max = 52;
                 List<Card> cardss = new List<Card>();
                 while (max > 0)
                 {

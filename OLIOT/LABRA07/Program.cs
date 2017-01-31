@@ -12,7 +12,8 @@ namespace LABRA07
         static void Main(string[] args)
         {
             //Teht1();
-            Teht2();
+            //Teht2();
+            TEHT3();
         }
 
         static void Teht1()
@@ -114,5 +115,73 @@ namespace LABRA07
                 Console.WriteLine("Foreach printtauksssa virhe");
             }
         }
+
+        static void TEHT3()
+        {
+            /*
+            Tee ohjelma, joka kysyy käyttäjältä lukuja(joko kokonaisluku tai reaaliluku) ja tallenna kokonaisluvut eri tiedostoon kuin reaaliluvut.
+            Sovellus tulee lopettaa, jos käyttäjä ei syötä kokonais - tai reaalilukua.Tarkista tiedostojen sisältö jollain tekstieditorilla.
+            Esimerkkitulostus:
+            */
+            StreamWriter reaali = new StreamWriter(@"d:\k8455\reaali.txt", true);
+            StreamWriter kokonais = new StreamWriter(@"d:\k8455\kokonais.txt", true);
+            bool test = true;
+
+            while (test)
+            {
+                string line = Console.ReadLine();
+                int number;
+                double douu;
+                
+                bool res2 = double.TryParse(line, out douu);
+                bool result = int.TryParse(line, out number);
+
+
+                if (result)
+                {
+                    try
+                    {
+                        Console.WriteLine(File.Exists(@"d:\k8455\kokonais.txt") ? "File exists.\n" : "File does not exist.\n");
+                        File.Open(@"d:\k8455\kokonais.txt", FileMode.Open, FileAccess.Read, FileShare.None);
+                        
+                        using (kokonais = File.AppendText(@"d:\k8455\kokonais.txt"))
+                        {
+                            Console.WriteLine("Give a text line (enter ends) :");
+                            kokonais.WriteLine(number);
+                        }
+
+                    }
+                    catch (Exception h)
+                    {
+                        Console.WriteLine(h.Message);
+                    }
+                }
+
+                else if (res2)
+                {
+                    try
+                    {
+                        using (reaali = File.AppendText(@"d:\k8455\reaali.txt"))
+                        {
+                            Console.WriteLine("Give a text line (enter ends) :");
+                            kokonais.WriteLine(douu);
+                        }
+
+                    }
+                    catch (Exception s)
+                    {
+                        Console.WriteLine(s.Message);
+                    }
+                }
+                else { Console.WriteLine("daa"); test = false; }
+                
+            }
+            reaali.Close();
+            kokonais.Close();
+            
+
+
+        }
+
     }
 }

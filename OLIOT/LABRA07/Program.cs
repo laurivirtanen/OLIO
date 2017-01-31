@@ -11,7 +11,7 @@ namespace LABRA07
     {
         static void Main(string[] args)
         {
-           // Teht1();
+            //Teht1();
             Teht2();
         }
 
@@ -66,44 +66,52 @@ namespace LABRA07
         static void Teht2()
         {
             
-            Dictionary<string, int> nimilista = new Dictionary<string, int>();
+            Dictionary<string,int> nimilista = new Dictionary<string,int>();
+            int lines = 0;
 
             try
             {
                 Console.WriteLine(File.Exists(@"d:\k8455\nimi.txt") ? "File exists.\n" : "File does not exist.\n");
                 string[] text = File.ReadAllLines(@"d:\k8455\nimi.txt");
-                
-                foreach (string s in text)
+
+
+                foreach (string line in text)
                 {
-                    if (nimilista.ContainsKey(s))
+                    lines++;
+                    if (nimilista.ContainsKey(line))
                     {
-                        nimilista.Add(s, +1);
+                        nimilista[line]++;
                     }
-                    else { nimilista.Add(s, 1); }
-                   
+                    else { nimilista.Add(line, 1); }
                 }
+
             }
+
             catch (Exception)
             {
                 Console.WriteLine("sup");    
             }
-
-            Console.WriteLine(nimilista.Count());
-
+            // AAKKOSTUS
+            var list = nimilista.Keys.ToList();
+            list.Sort();
+            // AAKKOSTUS
             try
-            {
-                foreach (KeyValuePair<string, int> kvp in nimilista)
+            { 
+                foreach (var key in list)
                 {
-                    Console.WriteLine("Nimi: {0} esiintyy {1} kertaa.", kvp.Key, kvp.Value);
+                    Console.WriteLine("Nimi {0} esiintyy {1} kertaa", key, nimilista[key]);
+                }
+                Console.WriteLine("\n");
 
+                // normaalijärjestys
+                foreach (KeyValuePair<string,int> kvp in nimilista)
+                {
+                    Console.WriteLine("Nimi {0} esiintyy {1} kertaa", kvp.Key, kvp.Value);
                 }
             }
-
-
             catch (Exception)
             {
-
-                Console.WriteLine("Error");
+                Console.WriteLine("Foreach printtauksssa virhe");
             }
         }
     }

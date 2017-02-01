@@ -29,7 +29,7 @@ namespace LABRA07
             StreamWriter outputFile = new StreamWriter(@"d:\k8455\test.txt", true);
             string userInput = " ";
             Console.WriteLine("type '----' to quit");
-
+            outputFile.Close();
             while (userInput != "----")
             {
                 
@@ -122,6 +122,8 @@ namespace LABRA07
             Sovellus tulee lopettaa, jos käyttäjä ei syötä kokonais - tai reaalilukua.Tarkista tiedostojen sisältö jollain tekstieditorilla.
             Esimerkkitulostus:
             */
+            try
+            {
             Console.WriteLine("Tehtävä 3 - Anna numero: ");
             StreamWriter reaali = new StreamWriter(@"d:\k8455\reaali.txt", true);
             StreamWriter kokonais = new StreamWriter(@"d:\k8455\kokonais.txt", true);
@@ -129,7 +131,7 @@ namespace LABRA07
             kokonais.Close();
             bool test = true;
 
-            try { 
+            
 
             while (test)
             {

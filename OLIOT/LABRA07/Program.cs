@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 
 namespace LABRA07
 {
@@ -11,12 +13,13 @@ namespace LABRA07
     {
         static void Main(string[] args)
         {
-            //Teht1();
-            //Teht2();
+            TEHT1();
+            TEHT2();
             TEHT3();
+            TEHT4();
         }
 
-        static void Teht1()
+        static void TEHT1()
         {
             StreamWriter outputFile = new StreamWriter(@"d:\k8455\test.txt", true);
             string userInput = " ";
@@ -64,12 +67,10 @@ namespace LABRA07
 
         }
 
-        static void Teht2()
+        static void TEHT2()
         {
             
             Dictionary<string,int> nimilista = new Dictionary<string,int>();
-            int lines = 0;
-
             try
             {
                 Console.WriteLine(File.Exists(@"d:\k8455\nimi.txt") ? "File exists.\n" : "File does not exist.\n");
@@ -78,7 +79,6 @@ namespace LABRA07
 
                 foreach (string line in text)
                 {
-                    lines++;
                     if (nimilista.ContainsKey(line))
                     {
                         nimilista[line]++;
@@ -88,9 +88,9 @@ namespace LABRA07
 
             }
 
-            catch (Exception)
+            catch (Exception h)
             {
-                Console.WriteLine("sup");    
+                Console.WriteLine(h.Message);
             }
             // AAKKOSTUS
             var list = nimilista.Keys.ToList();
@@ -123,10 +123,12 @@ namespace LABRA07
             Sovellus tulee lopettaa, jos käyttäjä ei syötä kokonais - tai reaalilukua.Tarkista tiedostojen sisältö jollain tekstieditorilla.
             Esimerkkitulostus:
             */
+            Console.WriteLine("Tehtävä 3 - Anna numero: ");
             StreamWriter reaali = new StreamWriter(@"d:\k8455\reaali.txt", true);
             StreamWriter kokonais = new StreamWriter(@"d:\k8455\kokonais.txt", true);
             bool test = true;
-
+            reaali.Close();
+            kokonais.Close();
             while (test)
             {
                 string line = Console.ReadLine();
@@ -141,12 +143,11 @@ namespace LABRA07
                 {
                     try
                     {
-                        Console.WriteLine(File.Exists(@"d:\k8455\kokonais.txt") ? "File exists.\n" : "File does not exist.\n");
-                        File.Open(@"d:\k8455\kokonais.txt", FileMode.Open, FileAccess.Read, FileShare.None);
+                       
                         
                         using (kokonais = File.AppendText(@"d:\k8455\kokonais.txt"))
                         {
-                            Console.WriteLine("Give a text line (enter ends) :");
+                            Console.WriteLine("Give a Number:");
                             kokonais.WriteLine(number);
                         }
 
@@ -161,10 +162,11 @@ namespace LABRA07
                 {
                     try
                     {
+                        
                         using (reaali = File.AppendText(@"d:\k8455\reaali.txt"))
                         {
-                            Console.WriteLine("Give a text line (enter ends) :");
-                            kokonais.WriteLine(douu);
+                            Console.WriteLine("Give a Number :");
+                            reaali.WriteLine(douu);
                         }
 
                     }
@@ -178,10 +180,71 @@ namespace LABRA07
             }
             reaali.Close();
             kokonais.Close();
-            
+
+
+            // print contents
+
+            Console.WriteLine("Contents of Integers: ");
+            string[] text = File.ReadAllLines(@"d:\k8455\kokonais.txt");
+            foreach (string s in text)
+            {
+                Console.WriteLine(s);
+            }
+
+            Console.WriteLine("Contents of Doubles: ");
+
+            string[] textDouble = File.ReadAllLines(@"d:\k8455\reaali.txt");
+            foreach (string s in textDouble)
+            {
+                Console.WriteLine(s);
+            }
 
 
         }
 
+        static void TEHT4()
+        {
+            TvOhjelma test = new TvOhjelma("Ohjelma1", "Kanava", "14:50", "15:00", "Mahtava ohjelma");
+            TvOhjelma test2 = new TvOhjelma("hyvä ohjelma", "Kanava", "15:50", "16:00", "Mahtava ohjelma");
+            List<TvOhjelma> ohjelmat = new List<TvOhjelma>();
+            IFormatter formatter = new BinaryFormatter();
+
+            try
+            {
+                Stream writeStream = new FileStream(@"d:\k8455\Teht4.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+                formatter.Serialize(writeStream, test);
+                writeStream.Close();
+            }
+            catch (Exception s)
+            {
+                Console.WriteLine(s.Message);
+            }
+
+            ohjelmat.Add(test);
+            ohjelmat.Add(test2);
+            try
+            {
+                Stream writeMultiple = new FileStream(@"d:\k8455\myShows.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+                formatter.Serialize(writeMultiple, ohjelmat);
+                writeMultiple.Close();
+                Stream openStrea = new FileStream(@"d:\k8455\myShows.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
+                List<TvOhjelma> readShows = (List<TvOhjelma>)formatter.Deserialize(openStrea);
+                openStrea.Close();
+                foreach (TvOhjelma item in readShows)
+                {
+                    Console.WriteLine("Tv ohjelma - nimi: {0} Kanava: {1} Aloitusaika: {2} Lopetusaika: {3} Ohjelmakuvaus: {4}", item.Name, item.Channel, item.StartTime, item.EndTime, item.InfoText);
+                }
+            }
+            catch (Exception d)
+            {
+                Console.WriteLine(d.Message);
+            }
+           
+            
+
+            
+
+
+        }
     }
 }

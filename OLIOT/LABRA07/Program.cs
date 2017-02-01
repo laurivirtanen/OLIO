@@ -58,8 +58,13 @@ namespace LABRA07
             {
                 Console.WriteLine(x.Message);
             }
-            
-            outputFile.Close();
+            finally
+            {
+                if(outputFile!= null)
+                {
+                    outputFile.Close();
+                }
+            }
 
         }
 
@@ -71,8 +76,6 @@ namespace LABRA07
             {
                 Console.WriteLine(File.Exists(@"d:\k8455\nimi.txt") ? "File exists.\n" : "File does not exist.\n");
                 string[] text = File.ReadAllLines(@"d:\k8455\nimi.txt");
-
-
                 foreach (string line in text)
                 {
                     if (nimilista.ContainsKey(line))
@@ -81,10 +84,10 @@ namespace LABRA07
                     }
                     else { nimilista.Add(line, 1); }
                 }
-            // AAKKOSTUS
+                //AAKKOSTUS
                 var list = nimilista.Keys.ToList();
                 list.Sort();
-            // AAKKOSTUS
+                //AAKKOSTUS
            
                 foreach (var key in list)
                 {
@@ -102,6 +105,7 @@ namespace LABRA07
             {
                 Console.WriteLine(ex.Message);
             }
+
 
         }
 
@@ -125,9 +129,9 @@ namespace LABRA07
             {
                 string line = Console.ReadLine();
                 int number;
-                double douu;
+                double dNumber;
                 
-                bool res2 = double.TryParse(line, out douu);
+                bool res2 = double.TryParse(line, out dNumber);
                 bool result = int.TryParse(line, out number);
 
 
@@ -145,10 +149,10 @@ namespace LABRA07
                     using (reaali = File.AppendText(@"d:\k8455\reaali.txt"))
                     {
                         Console.WriteLine("Give a Number :");
-                        reaali.WriteLine(douu);
+                        reaali.WriteLine(dNumber);
                     }
                 }
-                else { Console.WriteLine("daa"); test = false; }
+                else { Console.WriteLine("Not a number"); test = false; }
                 
             }
 
@@ -188,25 +192,22 @@ namespace LABRA07
                 IFormatter formatter = new BinaryFormatter();
 
                 //yksittäisen tallennus tiedostoon
-
                 Stream writeStream = new FileStream(@"d:\k8455\Teht4.bin", FileMode.Create, FileAccess.Write, FileShare.None);
                 formatter.Serialize(writeStream, test);
                 writeStream.Close();
-
-
-
+                
                 ohjelmat.Add(test);
                 ohjelmat.Add(test2);
                 ohjelmat.Add(test3);
 
-                //olio listan tallennus ja luku tiedostoon
 
+                //olio listan tallennus ja luku tiedostoon
                 Stream writeMultiple = new FileStream(@"d:\k8455\myShows.bin", FileMode.Create, FileAccess.Write, FileShare.None);
                 formatter.Serialize(writeMultiple, ohjelmat);
                 writeMultiple.Close();
-                Stream openStrea = new FileStream(@"d:\k8455\myShows.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
-                List<TvOhjelma> readShows = (List<TvOhjelma>)formatter.Deserialize(openStrea);
-                openStrea.Close();
+                Stream openStream = new FileStream(@"d:\k8455\myShows.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
+                List<TvOhjelma> readShows = (List<TvOhjelma>)formatter.Deserialize(openStream);
+                openStream.Close();
 
                 //listan luku tiedostosta
                 foreach (TvOhjelma item in readShows)

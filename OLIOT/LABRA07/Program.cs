@@ -11,10 +11,16 @@ namespace LABRA07
     {
         static void Main(string[] args)
         {
+            try { 
             TEHT1();
             TEHT2();
             TEHT3();
             TEHT4();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         static void TEHT1()

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OLIOT", "OLIOT\OLIOT.csproj", "{602584BB-62A2-4F7B-BADA-1E6171E2F836}"
 EndProject
@@ -15,7 +15,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CALCTEST", "LABRA08\CALCTES
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CALCTESTtests", "LABRA08Tests\CALCTESTtests.csproj", "{1BEB7E50-D08A-48D0-AA6E-8C22F502432E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LABRA08-", "LABRA08-\LABRA08-.csproj", "{23E80766-F6DA-4C52-A01A-46905B95F23B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LABRA08", "LABRA08-\LABRA08.csproj", "{23E80766-F6DA-4C52-A01A-46905B95F23B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LABRA08Tests", "LABRA08Tests\LABRA08Tests.csproj", "{27609080-3210-4CC0-8EA2-020F8E647EFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{23E80766-F6DA-4C52-A01A-46905B95F23B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23E80766-F6DA-4C52-A01A-46905B95F23B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23E80766-F6DA-4C52-A01A-46905B95F23B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27609080-3210-4CC0-8EA2-020F8E647EFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27609080-3210-4CC0-8EA2-020F8E647EFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27609080-3210-4CC0-8EA2-020F8E647EFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27609080-3210-4CC0-8EA2-020F8E647EFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

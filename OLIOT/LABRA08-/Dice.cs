@@ -9,7 +9,6 @@ namespace LABRA08_
     class Dice
     {
 
-
         public static int ThrowDice(Random r)
         {
             int t = r.Next(1, 7);

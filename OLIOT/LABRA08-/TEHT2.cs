@@ -77,10 +77,11 @@ namespace LABRA08_
             Fishes = f;
         }
 
-        public List<Fish> AddFish(Fish f)
+        public string AddFish(Fish f)
         {
+            string s = "Added fish: " + f.ToString();
             Fishes.Add(f);
-            return Fishes;
+            return s;
         }
 
         //REMOVE FROM FISHLIST
@@ -152,4 +153,155 @@ namespace LABRA08_
 
     }
 
+    abstract public class Shape
+    {
+        public string Name { get; set; }
+        public List<Shape> Shapes { get; }
+        abstract public double Area();
+        abstract public double Circumference();
+    }
+
+    class Shapes
+    {
+        public List<Shape> shappes { get; }
+
+        public Shapes(List<Shape> s)
+        {
+            shappes = s;
+        }
+
+        public override string ToString()
+        {
+            string s = "";
+            foreach (Shape sd in shappes)
+            {
+                s += sd.ToString() + "\n";
+            }
+            return s;
+        }
+    }
+
+    class Circle : Shape
+    {
+        double radius;
+        double area;
+        double circumference;
+
+        public Circle(double r)
+        {
+            radius = r;
+            Area();
+            Circumference();
+        }
+        public override double Area()
+        {
+            area = Math.PI * (radius * radius);
+            return area;
+        }
+        public override double Circumference()
+        {
+            circumference = 2 * Math.PI * radius;
+            return circumference;
+        }
+
+        public override string ToString()
+        {
+            return "Circle Radius=" +radius+ " Area=" + area.ToString("F2") + " Circumference=" + circumference.ToString("F2");
+        }
+    }
+
+    class Rectangle : Shape
+    {
+        double width;
+        double height;
+        double area;
+        double circumference;
+
+        public Rectangle(double w,double h)
+        {
+            width = w;
+            height = h;
+            Area();
+            Circumference();
+        }
+
+        public override double Area()
+        {
+            area = width * height;
+            return area;
+        }
+        public override double Circumference()
+        {
+            circumference = (width + height) * 2.00d;
+            return circumference;
+        }
+
+        public override string ToString()
+        {
+            return "Rectangle Width=" + width + " Height=" + height + " Area=" + area.ToString("F2") + " Circumference=" + circumference.ToString("F2");
+        }
+    }
+
+    public class ArrayCalcs
+    {
+
+        double sum;
+        double avg;
+        double min;
+        double max;
+
+        public ArrayCalcs(double[] sup)
+        {
+           sum = Sum(sup);
+           avg = Avg(sup);
+           min = Min(sup);
+           max = Max(sup);
+
+        }
+
+        public static double Sum(double[] daa)
+        {
+
+            double a = 0;
+            foreach (double d in daa)
+            {
+                a += d;
+            }
+            return a;
+        }
+        public static double Avg(double[] daa)
+        {
+            double a = 0;
+            int b = 0;
+
+            foreach (double d in daa)
+            {
+                a += d;
+                b++;
+            }
+            
+            return (a/b);
+        }
+        public static double Min(double[] daa)
+        {
+            Array.Sort(daa);
+            return daa[0];
+        }
+        public static double Max(double[] daa)
+        {
+            Array.Sort(daa);
+            Array.Reverse(daa);
+            return daa[0];
+        }
+
+        public override string ToString()
+        {
+            return "Sum = " + sum.ToString("F2") + "\nAve = " + avg.ToString("F2") + "\nMin = " + min.ToString("F2") + "\nMax = " + max.ToString("F2");
+        }
+    }
+
+    class InvoiceItem
+    {
+
+    }
 }

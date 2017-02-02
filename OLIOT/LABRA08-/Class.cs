@@ -153,7 +153,7 @@ namespace LABRA08_
 
     }
 
-    abstract public class Shape
+    abstract class Shape
     {
         public string Name { get; set; }
         public List<Shape> Shapes { get; }
@@ -296,12 +296,80 @@ namespace LABRA08_
 
         public override string ToString()
         {
+
             return "Sum = " + sum.ToString("F2") + "\nAve = " + avg.ToString("F2") + "\nMin = " + min.ToString("F2") + "\nMax = " + max.ToString("F2");
         }
     }
 
-    class InvoiceItem
+    public class InvoiceItem
     {
+        public double total;
+        public string Name { get; set; }
+        public double Price { get; set; }
+        public int Quantity { get; set; }
+        
 
+
+        public InvoiceItem(string nm,double pr, int qua)
+        {
+            Name = nm;
+            Price = pr;
+            Quantity = qua;
+            total = (Price * Quantity);
+        }
+
+        public override string ToString()
+        {
+            return "\n" + Name + " " + Price.ToString("F02") + " " + Quantity + " pieces " + total.ToString("F02") + " total ";
+        }
+    }
+
+    public class Invoice
+    {
+        public List<InvoiceItem> InItems { get; }
+        public string Customer { get; set; }
+        public string Total { get; }
+        private double tots = 0d;
+
+        public Invoice(List<InvoiceItem> itms, string cust)
+        {
+            InItems = itms;
+            Customer = cust;
+            //Not in use
+            Total = "Total: ";
+            double d = 0;
+            foreach (InvoiceItem i in InItems)
+            {
+                d += i.total;
+            }
+            Total += d.ToString("F02");
+            // 
+
+            InTotal(); // replaces the code above Total;
+        }
+
+        //Total calculation outside of constructor for testing purposes
+        public double InTotal()
+        {
+            foreach (var item in InItems)
+            {
+                tots += item.total;
+            }
+            return tots;
+        }
+
+        public string PrintInvoice()
+        {
+            string s = "Customer: " + Customer + "'s" + " invoice:";
+            s += "\n=====================================";
+            foreach (var item in InItems)
+            {
+                s += item.ToString();
+            }
+            s += "\n=====================================\n";
+            s += "Total - " +tots.ToString("F02");
+            return s;
+        }
+         
     }
 }

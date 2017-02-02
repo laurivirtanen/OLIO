@@ -12,10 +12,12 @@ namespace LABRA08_
         {
             try
             {
-                // Dicey();
-                //Shopping();
-                //Fishing();
+                TEHT1();
+                TEHT2();
+                TEHT3();
+                TEHT4();
                 TEHT5();
+                TEHT6();
             }
             catch (Exception ex)
             {
@@ -23,10 +25,12 @@ namespace LABRA08_
             }
         }
 
-        static void Dicey()
+        static void TEHT1()
         {
             try
             {
+
+                Console.WriteLine("\n\n\tTehtävä 1\n\n");
                 Random rand = new Random();
                 Dictionary<int, int> dices = new Dictionary<int, int>();
                 int throws = 1000;
@@ -67,19 +71,21 @@ namespace LABRA08_
             }
         }
 
-        static void Shopping()
+        static void TEHT2()
         {
-            try { 
-            Product daa = new Product("Milk", 2.4f);
-            List<Product> products = new List<Product>();
-            products.Add(new Product("Beer", 1.5f));
-            products.Add(new Product("Beer", 1.5f));
-            products.Add(new Product("Cheese", 3.5f));
-            products.Add(new Product("Coffee", 3.5f));
-            products.Add(daa);
-            ShoppingCart cart = new ShoppingCart(products);
+            try {
 
-            Console.WriteLine(cart.AllData(cart.products));
+                Console.WriteLine("\n\n\tTehtävä 2\n\n");
+                Product daa = new Product("Milk", 2.4f);
+                List<Product> products = new List<Product>();
+                products.Add(new Product("Beer", 1.5f));
+                products.Add(new Product("Beer", 1.5f));
+                products.Add(new Product("Cheese", 3.5f));
+                products.Add(new Product("Coffee", 3.5f));
+                products.Add(daa);
+                ShoppingCart cart = new ShoppingCart(products);
+
+                Console.WriteLine(cart.AllData(cart.products));
             }
             catch(Exception ex)
             {
@@ -87,8 +93,10 @@ namespace LABRA08_
             }
         }
 
-        static void Fishing()
+        static void TEHT3()
         {
+
+            Console.WriteLine("\n\n\tTehtävä 3\n\n");
             Location jkl = new Location("Jyväskylä", "Jyväs-järven pohjoiskolkka");
             Location place2 = new Location("Uurainen", "Puro");
 
@@ -123,6 +131,8 @@ namespace LABRA08_
         {
             try
             {
+
+                Console.WriteLine("\n\n\tTehtävä 4\n\n");
                 Rectangle laatikko = new Rectangle(10, 20);
                 Rectangle laatikko2 = new Rectangle(20, 30);
                 Rectangle laatikko3 = new Rectangle(40, 50);
@@ -152,15 +162,14 @@ namespace LABRA08_
 
         static void TEHT5()
         {
-            try { 
+            try
+            {
+
+                Console.WriteLine("\n\n\tTehtävä 5\n\n");
                 double[] array = { 1.0, 2.0, 3.3, 5.5, 6.3, -4.5, 12.0 };
-
                 ArrayCalcs laskin = new ArrayCalcs(array);
-
                 Console.WriteLine(laskin.ToString());
-
                 double[] array2 = { };
-
                 ArrayCalcs calc = new ArrayCalcs(array2);
                 Console.WriteLine(calc.ToString());
             }
@@ -175,7 +184,26 @@ namespace LABRA08_
 
         static void TEHT6()
         {
-            Console.WriteLine("Please Start");
+            try
+            {
+                Console.WriteLine("\n\n\tTehtävä 6\n\n");
+                InvoiceItem i1 = new InvoiceItem("Milk", 1.75d, 2);
+                InvoiceItem i2 = new InvoiceItem("Beer", 5.25d, 1);
+                InvoiceItem i3 = new InvoiceItem("Food", 5.66d, 1633);
+                List<InvoiceItem> iItems = new List<InvoiceItem>();
+                iItems.Add(i1);
+                iItems.Add(i2);
+                iItems.Add(i3);
+                iItems.Add(new InvoiceItem("Cheese", 4.69, 5));
+                Invoice d1 = new Invoice(iItems, "Lasse Mortensen");
+                Console.WriteLine(d1.PrintInvoice());
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
+
     }
 }

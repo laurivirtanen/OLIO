@@ -95,36 +95,44 @@ namespace LABRA08_
 
         static void TEHT3()
         {
+            try
+            {
+                Console.WriteLine("\n\n\tTehtävä 3\n\n");
+                Location jkl = new Location("Jyväskylä", "Jyväs-järven pohjoiskolkka");
+                Location place2 = new Location("Uurainen", "Puro");
 
-            Console.WriteLine("\n\n\tTehtävä 3\n\n");
-            Location jkl = new Location("Jyväskylä", "Jyväs-järven pohjoiskolkka");
-            Location place2 = new Location("Uurainen", "Puro");
+                Fish fish1 = new Fish("Hauki", 100, 5.6f);
+                List<Fish> fishes = new List<Fish>();
+                List<Fish> pikes = new List<Fish>();
 
-            Fish fish1 = new Fish("Hauki", 100, 5.6f);
-            List<Fish> fishes = new List<Fish>();
-            List<Fish> pikes = new List<Fish>();
+                Fisherman dude = new Fisherman("Lasse", 404040, jkl, fishes);
+                Fish fish2 = new Fish("Hauki", 121, 6.5f);
+                Fish fish3 = new Fish("Lohi", 81, 3.5f);
+                Fish fish4 = new Fish("Ahven", 33, 0.5f);
+                Fish fish0 = new Fish("aaaaaaaaaaaaaaaaaa", 33, 0.5f);
+                fishes.Add(fish1);
+                fishes.Add(fish2);
 
-            Fisherman dude = new Fisherman("Lasse", 404040, jkl,fishes);
-            Fish fish2 = new Fish("Hauki", 121, 6.5f);
-            Fish fish3 = new Fish("Lohi", 81, 3.5f);
-            Fish fish4 = new Fish("Ahven", 33, 0.5f);
-            Fish fish0 = new Fish("aaaaaaaaaaaaaaaaaa", 33, 0.5f);
-            fishes.Add(fish1);
-            fishes.Add(fish2);
+                pikes.Add(fish1);
+                pikes.Add(fish2);
+                Fisherman toka = new Fisherman("Kalastaja", 221541, place2, pikes);
+
+                List<Fisherman> lista = new List<Fisherman>();
+                lista.Add(toka);
+                Console.WriteLine(toka.AddFish(fish0));
+
+                Console.WriteLine(toka.ToString());
+                Console.WriteLine(dude.ToString());
+
+                FisherReg reg = new FisherReg(lista);
+                Console.WriteLine(reg.ToString());
+            }
             
-            pikes.Add(fish1);
-            pikes.Add(fish2);
-            Fisherman toka = new Fisherman("Kalastaja", 221541, place2, pikes);
-
-            List<Fisherman> lista = new List<Fisherman>();
-            lista.Add(toka);
-            Console.WriteLine(toka.AddFish(fish0));
-
-            Console.WriteLine(toka.ToString());
-            Console.WriteLine(dude.ToString());
-
-            FisherReg reg = new FisherReg(lista);
-            Console.WriteLine(reg.ToString());
+           
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         static void TEHT4()

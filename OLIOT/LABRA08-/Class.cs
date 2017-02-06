@@ -335,7 +335,8 @@ namespace LABRA08_
         {
             InItems = itms;
             Customer = cust;
-            //Not in use
+
+            /*Not in use
             Total = "Total: ";
             double d = 0;
             foreach (InvoiceItem i in InItems)
@@ -343,7 +344,7 @@ namespace LABRA08_
                 d += i.total;
             }
             Total += d.ToString("F02");
-            // 
+            */ 
 
             InTotal(); // replaces the code above Total;
         }

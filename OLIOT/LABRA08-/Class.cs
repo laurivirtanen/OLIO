@@ -163,19 +163,19 @@ namespace LABRA08_
 
     class Shapes
     {
-        public List<Shape> shappes { get; }
+        public List<Shape> shapes { get; }
 
         public Shapes(List<Shape> s)
         {
-            shappes = s;
+            shapes = s;
         }
 
         public override string ToString()
         {
             string s = "";
-            foreach (Shape sd in shappes)
+            foreach (Shape shape in shapes)
             {
-                s += sd.ToString() + "\n";
+                s += shape.ToString() + "\n";
             }
             return s;
         }

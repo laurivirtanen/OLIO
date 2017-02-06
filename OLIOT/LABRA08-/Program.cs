@@ -144,15 +144,15 @@ namespace LABRA08_
                 Rectangle laatikko = new Rectangle(10, 20);
                 Rectangle laatikko2 = new Rectangle(20, 30);
                 Rectangle laatikko3 = new Rectangle(40, 50);
-                Circle kirkle = new Circle(1);
-                Circle kirkle2 = new Circle(2);
-                Circle kirkle3 = new Circle(3);
+                Circle circle = new Circle(1);
+                Circle circle2 = new Circle(2);
+                Circle circle3 = new Circle(3);
 
                 List<Shape> shapes = new List<Shape>();
 
-                shapes.Add(kirkle);
-                shapes.Add(kirkle2);
-                shapes.Add(kirkle3);
+                shapes.Add(circle);
+                shapes.Add(circle2);
+                shapes.Add(circle3);
                 shapes.Add(laatikko);
                 shapes.Add(laatikko2);
                 shapes.Add(laatikko3);
